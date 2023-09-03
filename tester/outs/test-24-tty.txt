@@ -1,0 +1,24 @@
+==5585== Memcheck, a memory error detector
+==5585== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5585== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==5585== Command: .././pipex assets/deepthought.txt notexisting wc outs/test-24.txt
+==5585== 
+notexisting: command not found
+==5588== 
+==5588== HEAP SUMMARY:
+==5588==     in use at exit: 0 bytes in 0 blocks
+==5588==   total heap usage: 108 allocs, 108 frees, 3,807 bytes allocated
+==5588== 
+==5588== All heap blocks were freed -- no leaks are possible
+==5588== 
+==5588== For lists of detected and suppressed errors, rerun with: -s
+==5588== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==5585== 
+==5585== HEAP SUMMARY:
+==5585==     in use at exit: 0 bytes in 0 blocks
+==5585==   total heap usage: 36 allocs, 36 frees, 1,596 bytes allocated
+==5585== 
+==5585== All heap blocks were freed -- no leaks are possible
+==5585== 
+==5585== For lists of detected and suppressed errors, rerun with: -s
+==5585== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

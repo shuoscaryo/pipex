@@ -1,0 +1,24 @@
+==5387== Memcheck, a memory error detector
+==5387== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5387== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==5387== Command: .././pipex assets/deepthought.txt grep\ Now wc\ -w not-existing/test-11.txt
+==5387== 
+not-existing/test-11.txt: No such file or directory
+==5391== 
+==5391== HEAP SUMMARY:
+==5391==     in use at exit: 0 bytes in 0 blocks
+==5391==   total heap usage: 36 allocs, 36 frees, 1,596 bytes allocated
+==5391== 
+==5391== All heap blocks were freed -- no leaks are possible
+==5391== 
+==5391== For lists of detected and suppressed errors, rerun with: -s
+==5391== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==5387== 
+==5387== HEAP SUMMARY:
+==5387==     in use at exit: 0 bytes in 0 blocks
+==5387==   total heap usage: 36 allocs, 36 frees, 1,596 bytes allocated
+==5387== 
+==5387== All heap blocks were freed -- no leaks are possible
+==5387== 
+==5387== For lists of detected and suppressed errors, rerun with: -s
+==5387== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

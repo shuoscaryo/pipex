@@ -1,0 +1,14 @@
+==5538== Memcheck, a memory error detector
+==5538== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5538== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==5538== Command: .././pipex assets/deepthought.txt grep\ Now cat outs/test-21.txt
+==5538== 
+==5538== 
+==5538== HEAP SUMMARY:
+==5538==     in use at exit: 0 bytes in 0 blocks
+==5538==   total heap usage: 36 allocs, 36 frees, 1,596 bytes allocated
+==5538== 
+==5538== All heap blocks were freed -- no leaks are possible
+==5538== 
+==5538== For lists of detected and suppressed errors, rerun with: -s
+==5538== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
