@@ -6,13 +6,14 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:39:18 by orudek            #+#    #+#             */
-/*   Updated: 2023/09/06 22:19:28 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/06 23:41:36 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "children.h"
 #include "error.h"
 #include "free.h"
+#include "split_args.h"
 
 static char	ft_check_access(char *path, t_pipex *pipex)
 {
@@ -24,24 +25,29 @@ static char	ft_check_access(char *path, t_pipex *pipex)
 	return (0);
 }
 
-
-
-static void	ft_get_command(char *str, char **path_list, t_pipex *pipex)
+static char	ft_check_first_cmd(t_pipex *pipex)
 {
-	char	*path;
-	char	*aux;
-	
-	path = NULL;
-	pipex->command.cmd = ft_split(str, ' ');
 	if (pipex->command.cmd == NULL)
 		ft_return_msg(SPLIT_ERROR, 1);
 	if (*pipex->command.cmd && (pipex->command.cmd[0][0] == '.'
 		|| pipex->command.cmd[0][0] == '/'))
 	{
 		if (ft_check_access(pipex->command.cmd[0], pipex))
-			return ;
+			return (1);
 		ft_return_perror(pipex->command.cmd[0], 127);
 	}
+	return (0);
+}
+
+static void	ft_get_command(char *str, char **path_list, t_pipex *pipex)
+{
+	char	*path;
+	char	*aux;
+
+	path = NULL;
+	pipex->command.cmd = ft_split_args(str, ' ');
+	if (ft_check_first_cmd(pipex))
+		return ;
 	while (*pipex->command.cmd && path_list && *path_list != NULL)
 	{
 		aux = ft_strjoin("/", pipex->command.cmd[0]);
@@ -56,7 +62,7 @@ static void	ft_get_command(char *str, char **path_list, t_pipex *pipex)
 	if (*pipex->command.cmd)
 		write(2, pipex->command.cmd[0], ft_strlen(pipex->command.cmd[0]));
 	else
-		write(2, "\"\"",2);
+		write(2, "\"\"", 2);
 	ft_return_msg(CMD_ERROR, 127);
 }
 

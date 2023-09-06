@@ -1,0 +1,48 @@
+TEST1
+	./pipex a a a a
+	<a_ a_ | a_ >a_
+
+TEST2
+	env -i ./pipex Makefile cat "grep OBJ" test2
+	env -i <Makefile cat | grep OBJ >test2_
+
+TEST3
+	PRIMERO:
+		cp /usr/bin/cat .
+		cp /bin/ls .
+	SEGUNDO:
+		./pipex Makefile ./ls ./cat test3
+		<Makefile ./ls | ./cat >test3_
+
+TEST4
+	PRIMERO:
+		touch cat ls
+		modificar los files para que tengan
+			#!/bin/bash
+			echo hola
+	SEGUNDO:
+		./pipex Makefile ls cat test4
+		<Makefile ls | cat test4_
+
+TEST5
+	PRIMERO:
+		cp /usr/bin/cat .
+		cp /bin/ls .
+		chmod -r ls cat
+	SEGUNDO:
+		./pipex Makefile ./ls ./cat test5
+		<Makefile ./ls | ./cat >test5_
+
+TEST6
+	./pipex Makefile "" "" test6
+	<Makefile "" | "" >test6
+
+TEST7
+	PRIMERO:
+		touch infile
+		chmod -r test7in
+		touch test5
+		chmod -w test7out
+	SEGUNDO:
+		./pipex test7in cat cat test7out
+		<test5in cat | cat >test7out
