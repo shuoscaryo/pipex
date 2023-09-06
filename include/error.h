@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:09:26 by orudek            #+#    #+#             */
-/*   Updated: 2023/08/02 19:54:43 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/06 20:58:33 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define DUP2 "Dup2"
 # define EXCVE "EXCVE"
 
-void	ft_return_msg(const char *msg, int error_code, t_pipex *pipex);
-void	ft_return_perror(const char *msg, int error_code, t_pipex *pipex);
+void	ft_return_msg(const char *msg, int error_code);
+void	ft_return_perror(const char *msg, int error_code);
 
 #endif

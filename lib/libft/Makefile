@@ -4,7 +4,7 @@ NAME := libft.a
 LIB := ar rcs
 RM := rm -f
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror -fsanitize=leak
+CFLAGS := -Wall -Wextra -Werror
 
 OBJ_DIR := obj
 SRC_DIR := src
