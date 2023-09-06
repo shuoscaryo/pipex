@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:33:00 by orudek            #+#    #+#             */
-/*   Updated: 2023/08/15 20:50:38 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/06 17:08:43 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ void	ft_free_array(char ***array)
 	while ((*array)[i] != NULL)
 		free((*array)[i++]);
 	free((*array));
+	(*array) = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:39:18 by orudek            #+#    #+#             */
-/*   Updated: 2023/08/24 17:30:40 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/06 20:56:21 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static char	ft_check_access(char *path, t_pipex *pipex)
 {
-	if (access(path, X_OK) == 0)
+	if (access(path, F_OK) == 0)
 	{
 		pipex->command.path = path;
 		return (1);
@@ -24,19 +24,21 @@ static char	ft_check_access(char *path, t_pipex *pipex)
 	return (0);
 }
 
+
+
 static void	ft_get_command(char *str, char **path_list, t_pipex *pipex)
 {
 	char	*path;
 	char	*aux;
-
+	
 	path = NULL;
 	pipex->command.cmd = ft_split(str, ' ');
 	if (pipex->command.cmd == NULL)
 		ft_return_msg(SPLIT_ERROR, 1, pipex);
-	if (ft_check_access(pipex->command.cmd[0], pipex))
-		return ;
-	while (*path_list != NULL && pipex->command.cmd[0][0] != '.'
-		&& pipex->command.cmd[0][0] != '/')
+	if (*pipex->command.cmd && (pipex->command.cmd[0][0] == '.'
+		|| pipex->command.cmd[0][0] == '/'))
+			return (void)ft_check_access(pipex->command.cmd[0], pipex);
+	while (*pipex->command.cmd && path_list && *path_list != NULL)
 	{
 		aux = ft_strjoin("/", pipex->command.cmd[0]);
 		path = ft_strjoin(*path_list, aux);
@@ -48,7 +50,10 @@ static void	ft_get_command(char *str, char **path_list, t_pipex *pipex)
 		path_list++;
 	}
 	ft_free(&path);
-	write(2, pipex->command.cmd[0], ft_strlen(pipex->command.cmd[0]));
+	if (*pipex->command.cmd)
+		write(2, pipex->command.cmd[0], ft_strlen(pipex->command.cmd[0]));
+	else
+		write(2, "\"\"",2);
 	ft_return_msg(CMD_ERROR, 127, pipex);
 }
 
@@ -64,7 +69,7 @@ void	ft_child1(t_pipex *pipex, char **argv, char **envp)
 	if (dup2(pipex->pipe[1], 1) == -1)
 		ft_return_perror(DUP2, 1, pipex);
 	execve(pipex->command.path, pipex->command.cmd, envp);
-	perror(EXCVE);
+	perror(pipex->command.cmd);
 	exit(1);
 }
 
@@ -80,6 +85,6 @@ void	ft_child2(t_pipex *pipex, char **argv, char **envp)
 	if (dup2(pipex->pipe[0], 0) == -1)
 		ft_return_perror(DUP2, 1, pipex);
 	execve(pipex->command.path, pipex->command.cmd, envp);
-	perror(EXCVE);
+	perror(pipex->command.cmd);
 	exit(1);
 }

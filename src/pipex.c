@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:09:57 by orudek            #+#    #+#             */
-/*   Updated: 2023/08/24 12:10:37 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/06 20:03:23 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_pipex_init(&pipex);
 	if (argc != 5)
 		ft_return_msg(ARG_ERROR, 1, &pipex);
-	if (!ft_get_path(envp, &pipex))
-		ft_return_msg(PATH_ERROR, 1, &pipex);
+	ft_get_path(envp, &pipex);
 	if (pipe(pipex.pipe) == -1)
 		ft_return_perror(PIPE, 1, &pipex);
 	pipex.pid[0].id = fork();
