@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:39:18 by orudek            #+#    #+#             */
-/*   Updated: 2023/09/07 13:51:20 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/07 14:21:57 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	ft_child1(t_pipex *pipex, char **argv, char **envp)
 	ft_get_command(argv[2], pipex->path, pipex);
 	if (dup2(pipex->infile, 0) == -1)
 		ft_return_perror(DUP2, 1, pipex);
+	close(pipex->infile);
 	close(pipex->pipe[0]);
 	if (dup2(pipex->pipe[1], 1) == -1)
 		ft_return_perror(DUP2, 1, pipex);
@@ -92,6 +93,7 @@ void	ft_child2(t_pipex *pipex, char **argv, char **envp)
 	ft_get_command(argv[3], pipex->path, pipex);
 	if (dup2(pipex->outfile, 1) == -1)
 		ft_return_perror(DUP2, 1, pipex);
+	close(pipex->outfile);
 	close(pipex->pipe[1]);
 	if (dup2(pipex->pipe[0], 0) == -1)
 		ft_return_perror(DUP2, 1, pipex);
