@@ -1,6 +1,6 @@
 NAME := pipex
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror -fsanitize=leak
+CFLAGS := -Wall -Wextra -Werror# -fsanitize=leak
 RM := rm -f
 
 SRC_DIR := src
