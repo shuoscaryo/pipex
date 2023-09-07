@@ -1,6 +1,0 @@
-PARA COMPILAR EL PIPEX COMENTADO
-	gcc -Wall -Werror -Wextra -Iinclude -Ilib/libft/include -o pipex test/pipex_comentado.c lib/libft/src/*
-PARA COMPILAR LA LIBRERIA
-	gcc pipex.a -o pipex
-EJEMPLOS DE COMANDOS
-	./pipex test/infile "grep hola" "wc -l" outfile
