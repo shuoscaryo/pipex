@@ -15,7 +15,8 @@ SRC_FILES := pipex.c\
 	free.c\
 	children.c\
 	error.c\
-	split_args.c
+	split_args.c\
+	split_args2.c\
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 INCLUDE_PATH := $(addprefix -I, $(INCLUDE_DIR))

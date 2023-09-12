@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:39:18 by orudek            #+#    #+#             */
-/*   Updated: 2023/09/07 14:21:57 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/12 16:36:29 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_get_command(char *str, char **path_list, t_pipex *pipex)
 	char	*aux;
 
 	path = NULL;
-	pipex->command.cmd = ft_split_args(str, ' ');
+	pipex->command.cmd = split_args(str, ' ');
 	if (ft_check_first_cmd(pipex))
 		return ;
 	while (*pipex->command.cmd && path_list && *path_list != NULL)

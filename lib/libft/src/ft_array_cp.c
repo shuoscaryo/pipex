@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_array_cp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 14:09:17 by orudek            #+#    #+#             */
-/*   Updated: 2023/08/07 12:25:47 by orudek           ###   ########.fr       */
+/*   Created: 2023/08/08 22:55:55 by orudek            #+#    #+#             */
+/*   Updated: 2023/08/09 00:21:45 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	**ft_array_cp(char **array)
 {
-	int	count;
+	char	**new_array;
+	int		size;
+	int		i;
 
-	if (!str)
-		return (0);
-	count = 0;
-	while (*str++)
-		count++;
-	return (count);
+	if (!array)
+		return (NULL);
+	size = 0;
+	while (array[size])
+		size++;
+	new_array = malloc(sizeof(char *) * (size + 1));
+	if (!new_array)
+		return (NULL);
+	i = -1;
+	while (++i < size)
+	{
+		new_array[i] = ft_strdup(array[i]);
+		if (new_array[i] == NULL)
+		{
+			ft_array_free(new_array);
+			return (NULL);
+		}
+	}
+	new_array[size] = NULL;
+	return (new_array);
 }

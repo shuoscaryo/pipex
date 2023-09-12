@@ -24,6 +24,8 @@ SRC_FILES := ft_atoi.c\
 	ft_memcpy.c\
 	ft_memmove.c\
 	ft_memset.c\
+	ft_msg_err.c\
+	ft_msg_perror.c\
 	ft_putchar_fd.c\
 	ft_putendl_fd.c\
 	ft_putnbr_fd.c\
@@ -37,6 +39,7 @@ SRC_FILES := ft_atoi.c\
 	ft_strlcpy.c\
 	ft_strlen.c\
 	ft_strmapi.c\
+	ft_strcmp.c\
 	ft_strncmp.c\
 	ft_strnstr.c\
 	ft_strrchr.c\
@@ -44,17 +47,22 @@ SRC_FILES := ft_atoi.c\
 	ft_substr.c\
 	ft_tolower.c\
 	ft_toupper.c\
+	ft_array_free.c\
+	ft_array_cp.c\
 	ft_lstadd_back.c\
+	ft_lstadd_back_content.c\
+	ft_lstget_val.c\
+	ft_lstget_index.c\
 	ft_lstadd_front.c\
-	ft_lstclear.c\
 	ft_lstdelone.c\
-	ft_lstclear.c\
+	ft_lstfree.c\
 	ft_lstdelone.c\
 	ft_lstiter.c\
 	ft_lstlast.c\
 	ft_lstmap.c\
 	ft_lstnew.c\
-	ft_lstsize.c
+	ft_lstsize.c\
+	ft_lstpop.c
 #Here begin the rules
 INCLUDE_PATH := $(addprefix -I, $(INCLUDE_DIR))
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstget_val.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 14:09:17 by orudek            #+#    #+#             */
-/*   Updated: 2023/08/07 12:25:47 by orudek           ###   ########.fr       */
+/*   Created: 2023/08/07 18:41:39 by orudek            #+#    #+#             */
+/*   Updated: 2023/08/07 19:06:08 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_lstget_val(t_list *list, int index)
 {
-	int	count;
+	int		i;
 
-	if (!str)
-		return (0);
-	count = 0;
-	while (*str++)
-		count++;
-	return (count);
+	if (index >= ft_lstsize(list) || index < 0)
+		return (NULL);
+	i = -1;
+	while (++i < index)
+		list = list->next;
+	return (list->content);
 }

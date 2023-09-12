@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 14:09:17 by orudek            #+#    #+#             */
-/*   Updated: 2023/08/07 12:25:47 by orudek           ###   ########.fr       */
+/*   Created: 2023/03/17 15:32:30 by orudek            #+#    #+#             */
+/*   Updated: 2023/09/11 14:04:34 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstfree(t_list **lst, void (*del)(void *))
 {
-	int	count;
+	t_list	*next;
+	t_list	*aux;
 
-	if (!str)
-		return (0);
-	count = 0;
-	while (*str++)
-		count++;
-	return (count);
+	aux = *lst;
+	while (aux)
+	{
+		next = aux->next;
+		ft_lstdelone(aux, del);
+		aux = next;
+	}
+	*lst = NULL;
 }

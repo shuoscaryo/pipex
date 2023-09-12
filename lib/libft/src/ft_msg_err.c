@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_msg_err.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 15:32:30 by orudek            #+#    #+#             */
-/*   Updated: 2023/03/31 15:40:12 by orudek           ###   ########.fr       */
+/*   Created: 2023/08/20 13:52:00 by orudek            #+#    #+#             */
+/*   Updated: 2023/08/20 14:16:44 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+long	ft_msg_err(const char *msg, long ret_val)
 {
-	t_list	*next;
-
-	while (*lst)
+	if (msg)
 	{
-		next = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next;
+		write(2, "ERROR: ", 7);
+		write(2, msg, ft_strlen(msg));
+		write(2, "\n", 1);
 	}
+	return (ret_val);
 }

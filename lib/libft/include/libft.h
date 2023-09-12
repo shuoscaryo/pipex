@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:42:27 by orudek            #+#    #+#             */
-/*   Updated: 2023/03/18 13:15:01 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/12 16:53:07 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(char *s1, char *s2);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
@@ -55,6 +56,14 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
+long	ft_array_free(char **array);
+char	**ft_array_cp(char **array);
+
+//ft_msg_err: prints the msg string in stderr and returns ret_val
+//used to send error messages while exiting functions
+long	ft_msg_err(const char *msg, long ret_val);
+long	ft_msg_perror(const char *msg, long ret_val);
+
 typedef struct s_list
 {
 	void			*content;
@@ -66,9 +75,13 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+char	ft_lstadd_back_content(t_list **lst, void *content);
+void	*ft_lstget_val(t_list *list, int index);
+t_list	*ft_lstget_index(t_list *list, int index);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstfree(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstpop(t_list **lst, int index, void (*del)(void *));
 
 #endif
