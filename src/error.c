@@ -6,7 +6,7 @@
 /*   By: orudek <orudek@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 12:07:03 by orudek            #+#    #+#             */
-/*   Updated: 2023/09/07 13:39:51 by orudek           ###   ########.fr       */
+/*   Updated: 2023/09/12 18:10:48 by orudek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_return_msg(const char *msg, int error_code, t_pipex *pipex)
 }
 
 void	ft_return_perror(const char *msg, int error_code, t_pipex *pipex)
-{	
+{
 	perror(msg);
 	ft_free_pipex(pipex);
 	exit(error_code);
